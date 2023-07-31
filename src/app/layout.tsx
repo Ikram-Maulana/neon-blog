@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-900">
         <Providers>
+          <NextTopLoader height={5} />
           <main>{children}</main>
         </Providers>
       </body>
