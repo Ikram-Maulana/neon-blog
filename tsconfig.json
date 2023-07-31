@@ -25,6 +25,7 @@
       "@/styles/*": ["./src/styles/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/ui/*": ["./src/components/ui/*"],
+      "@types/*": ["./src/types/*"],
       "@/validator/*": ["./src/validator/*"]
     }
   },
