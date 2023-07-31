@@ -1,3 +1,5 @@
+import Providers from "@/components/providers";
+import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -15,8 +17,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "motion-safe:scroll-smooth bg-white antialiased",
+        inter.className
+      )}
+    >
+      <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-900">
+        <Providers>
+          <main>{children}</main>
+        </Providers>
+      </body>
     </html>
   );
 }
