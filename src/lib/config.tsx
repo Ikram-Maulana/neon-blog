@@ -1,3 +1,14 @@
+import {
+  CodeIcon,
+  FileTextIcon,
+  LightningBoltIcon,
+  Link2Icon,
+  MixerHorizontalIcon,
+  NotionLogoIcon,
+  RocketIcon,
+  UpdateIcon,
+} from "@radix-ui/react-icons";
+
 export const SITE = {
   name: "Neon Blog",
 
@@ -59,5 +70,40 @@ export const NAVBAR_MOBILE = [
     name: "Github",
     href: "https://github.com/Ikram-Maulana/neon-blog",
     newPage: true,
+  },
+];
+
+export const FEATURES = [
+  {
+    title: "Blazing Fast",
+    icon: LightningBoltIcon,
+  },
+  {
+    title: "Always Available",
+    icon: UpdateIcon,
+  },
+  {
+    title: "Minimalist Design",
+    icon: RocketIcon,
+  },
+  {
+    title: "Customizable",
+    icon: MixerHorizontalIcon,
+  },
+  {
+    title: "MIT Licensed",
+    icon: FileTextIcon,
+  },
+  {
+    title: "Content via Notion",
+    icon: NotionLogoIcon,
+  },
+  {
+    title: "SEO Friendly",
+    icon: Link2Icon,
+  },
+  {
+    title: "Open New Idea",
+    icon: CodeIcon,
   },
 ];
