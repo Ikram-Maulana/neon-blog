@@ -27,3 +27,37 @@ export const SITE = {
   creator: "Ikram Maulana",
   themeColor: "#F9F5EB",
 };
+
+export const NAVBAR = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+  },
+];
+
+export const NAVBAR_MOBILE = [
+  {
+    name: "Home",
+    href: "/",
+    newPage: false,
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    newPage: false,
+  },
+  {
+    name: "Developer",
+    href: "https://ikram-maulana.tech",
+    newPage: true,
+  },
+  {
+    name: "Github",
+    href: "https://github.com/Ikram-Maulana/neon-blog",
+    newPage: true,
+  },
+];

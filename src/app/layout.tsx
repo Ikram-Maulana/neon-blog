@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import Providers from "@/components/providers";
 import { SITE } from "@/lib/config";
 import { cn } from "@/lib/utils";
@@ -36,7 +37,8 @@ export default function RootLayout({
     >
       <body className="min-h-screen antialiased bg-zinc-50 dark:bg-zinc-900">
         <Providers>
-          <NextTopLoader height={5} />
+          <NextTopLoader height={3} />
+          <Navbar />
           <main>{children}</main>
         </Providers>
       </body>
