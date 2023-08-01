@@ -38,7 +38,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen antialiased bg-zinc-50 dark:bg-zinc-900">
         <Providers>
-          <NextTopLoader height={3} />
+          <NextTopLoader height={3} color="#10b981" />
           <Navbar />
           <main>{children}</main>
           <Footer />
