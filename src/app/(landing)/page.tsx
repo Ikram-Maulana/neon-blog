@@ -1,10 +1,10 @@
-import { FEATURES, SITE } from "@/lib/config";
+import { FEATURES } from "@/lib/config";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: `Home | ${SITE.name}`,
+  title: "Home",
 };
 
 export default function Home() {
