@@ -15,21 +15,33 @@ import {
   SunIcon,
 } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const ThemeToggleMobile = () => {
+  const [themeSwitcher, setThemeSwitcher] = useState("");
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    if (theme === "light") {
+      setThemeSwitcher("light");
+    } else if (theme === "dark") {
+      setThemeSwitcher("dark");
+    } else {
+      setThemeSwitcher("system");
+    }
+  }, [theme]);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className={cn("px-3 flex space-x-2")}>
-          {theme === "light" ? (
+          {themeSwitcher === "light" ? (
             <>
               <SunIcon className="w-4 h-4 text-muted-foreground" />
               <p className="font-semibold">Light</p>
               <ChevronDownIcon className="w-4 h-4 ml-2 text-muted-foreground" />
             </>
-          ) : theme === "dark" ? (
+          ) : themeSwitcher === "dark" ? (
             <>
               <MoonIcon className="w-4 h-4 text-muted-foreground" />
               <p className="font-semibold">Dark</p>
