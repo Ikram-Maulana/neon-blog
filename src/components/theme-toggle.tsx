@@ -29,7 +29,7 @@ const ThemeToggle = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className={cn("px-3")}>
+        <Button variant="ghost">
           {themeSwitcher === "light" ? (
             <SunIcon className="w-4 h-4 text-sky-500 dark:text-sky-400" />
           ) : themeSwitcher === "dark" ? (

@@ -34,7 +34,7 @@ const ThemeToggleMobile = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={cn("px-3 flex space-x-2")}>
+        <Button variant="outline" className={cn("flex space-x-2")}>
           {themeSwitcher === "light" ? (
             <>
               <SunIcon className="w-4 h-4 text-muted-foreground" />
