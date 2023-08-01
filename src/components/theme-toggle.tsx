@@ -31,9 +31,9 @@ const ThemeToggle = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost">
           {themeSwitcher === "light" ? (
-            <SunIcon className="w-4 h-4 text-sky-500 dark:text-sky-400" />
+            <SunIcon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
           ) : themeSwitcher === "dark" ? (
-            <MoonIcon className="w-4 h-4 text-sky-500 dark:text-sky-400" />
+            <MoonIcon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
           ) : (
             <MoonIcon className="w-4 h-4" />
           )}
@@ -43,21 +43,34 @@ const ThemeToggle = () => {
       <DropdownMenuContent align="end" forceMount>
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <SunIcon
-            className={cn("w-4 h-4 mr-2", theme === "light" && "text-sky-500")}
+            className={cn(
+              "w-4 h-4 mr-2",
+              theme === "light" && "text-emerald-500"
+            )}
           />
-          <span className={cn(theme === "light" && "text-sky-500")}>Light</span>
+          <span className={cn(theme === "light" && "text-emerald-500")}>
+            Light
+          </span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <MoonIcon
-            className={cn("w-4 h-4 mr-2", theme === "dark" && "text-sky-400")}
+            className={cn(
+              "w-4 h-4 mr-2",
+              theme === "dark" && "text-emerald-400"
+            )}
           />
-          <span className={cn(theme === "dark" && "text-sky-400")}>Dark</span>
+          <span className={cn(theme === "dark" && "text-emerald-400")}>
+            Dark
+          </span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <LaptopIcon
-            className={cn("w-4 h-4 mr-2", theme === "system" && "text-sky-400")}
+            className={cn(
+              "w-4 h-4 mr-2",
+              theme === "system" && "text-emerald-400"
+            )}
           />
-          <span className={cn(theme === "system" && "text-sky-400")}>
+          <span className={cn(theme === "system" && "text-emerald-400")}>
             System
           </span>
         </DropdownMenuItem>

@@ -60,19 +60,19 @@ const ThemeToggleMobile = () => {
       <DropdownMenuContent align="end" forceMount>
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className={cn(theme === "light" && "bg-sky-500 text-zinc-50 ")}
+          className={cn(theme === "light" && "bg-emerald-500 text-zinc-50 ")}
         >
           <span className="font-semibold">Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className={cn(theme === "dark" && "bg-sky-400 text-zinc-50")}
+          className={cn(theme === "dark" && "bg-emerald-400 text-zinc-50")}
         >
           <span className="font-semibold">Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className={cn(theme === "system" && "bg-sky-400 text-zinc-50")}
+          className={cn(theme === "system" && "bg-emerald-400 text-zinc-50")}
         >
           <span className="font-semibold">System</span>
         </DropdownMenuItem>
