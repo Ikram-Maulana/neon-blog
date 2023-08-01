@@ -31,6 +31,7 @@ const Navbar: FC = () => {
               src="/lipsum.webp"
               width={155}
               height={36}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 60vw"
               alt="Logo Ipsum"
               className="pr-4"
             />
