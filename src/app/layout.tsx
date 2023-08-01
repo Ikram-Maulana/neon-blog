@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Providers from "@/components/providers";
 import { SITE } from "@/lib/config";
@@ -40,6 +41,7 @@ export default function RootLayout({
           <NextTopLoader height={3} />
           <Navbar />
           <main>{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
