@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   authors: SITE.authors,
   creator: SITE.creator,
   themeColor: SITE.themeColor,
+  icons: SITE.icons,
 };
 
 export default function RootLayout({

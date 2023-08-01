@@ -28,7 +28,7 @@ const Navbar: FC = () => {
           <Link href="/">
             <Image
               priority
-              src="/logo-ipsum.webp"
+              src="/lipsum.webp"
               width={155}
               height={36}
               alt="Logo Ipsum"
