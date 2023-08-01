@@ -34,7 +34,7 @@ export default function RootLayout({
         inter.className
       )}
     >
-      <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-900">
+      <body className="min-h-screen antialiased bg-zinc-50 dark:bg-zinc-900">
         <Providers>
           <NextTopLoader height={5} />
           <main>{children}</main>
