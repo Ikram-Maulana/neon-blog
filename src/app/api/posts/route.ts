@@ -28,6 +28,7 @@ export const GET = async (req: NextRequest) => {
   const limit = req.nextUrl.searchParams.get("_limit");
   const page = req.nextUrl.searchParams.get("_page");
   const search = req.nextUrl.searchParams.get("_search");
+  const highlight = req.nextUrl.searchParams.get("_highlight");
 
   try {
     const query = await notion.databases.query({
@@ -44,6 +45,12 @@ export const GET = async (req: NextRequest) => {
             property: "title",
             rich_text: {
               contains: search ? search : "",
+            },
+          },
+          {
+            property: "highlight",
+            checkbox: {
+              equals: highlight === "true" ? true : false,
             },
           },
         ],
