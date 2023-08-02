@@ -30,7 +30,7 @@ export default function Home() {
               application router powered by the Notion Public API. The data
               comes from{" "}
               <Link
-                href="#"
+                href="https://ikram-maulana.notion.site/Neon-Blog-5ea1d566a988429481fc7ff853d555f4?pvs=4"
                 className="underline underline-offset-2 decoration-dotted decoration-emerald-500 dark:decoration-emerald-400"
                 target="_blank"
                 rel="noopener noreferrer"
