@@ -1,3 +1,4 @@
+import PostsLimit from "@/components/posts-limit";
 import { FEATURES } from "@/lib/config";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -53,7 +54,7 @@ export default function Home() {
       </section>
 
       <section className="pb-6 scroll-mt-16" id="features">
-        <div className="max-w-6xl px-4 py-16 mx-auto lg:px-8 lg:py-20">
+        <div className="max-w-6xl px-4 py-16 mx-auto xl:px-8 lg:py-20">
           <div className="mb-4">
             <div className="mb-12 text-center md:mx-auto">
               <p className="mb-1 font-semibold tracking-wide uppercase text-emerald-500 dark:text-emerald-400">
@@ -90,7 +91,7 @@ export default function Home() {
       </section>
 
       <section className="pb-6 scroll-mt-16" id="latest">
-        <div className="max-w-6xl px-4 py-16 mx-auto lg:px-8 lg:py-20">
+        <div className="max-w-6xl px-4 py-16 mx-auto xl:px-8 lg:py-20">
           <div className="mb-4">
             <div className="mb-12 text-center md:mx-auto">
               <p className="mb-1 font-semibold tracking-wide uppercase text-emerald-500 dark:text-emerald-400">
@@ -102,27 +103,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="grid items-center grid-cols-3 gap-4 mb-0 dark:text-white sm:grid-cols-2 md:my-12 lg:grid-cols-4">
-            {FEATURES.map(({ title, icon: Icon }, index) => (
-              <div
-                key={`feature-${index}`}
-                className="col-span-3 mb-4 sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1"
-              >
-                <div className="flex items-center flex-flow">
-                  <div className="mb-4 mr-4">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-md bg-emerald-500 dark:bg-emerald-600">
-                      {Icon && (
-                        <Icon className="w-5 h-5 text-zinc-50 dark:text-zinc-200" />
-                      )}
-                    </div>
-                  </div>
-                  <h3 className="mb-3 text-xl font-bold tracking-tight scroll-m-20">
-                    {title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div> */}
+          <PostsLimit />
         </div>
       </section>
     </div>
