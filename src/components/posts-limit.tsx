@@ -1,7 +1,7 @@
 "use client";
 
 import PostCard from "@/components/post-card";
-import { getPostsLimit } from "@/helpers/post/get-post-limit";
+import { getPostsLimit } from "@/helpers/posts/get-posts-limit";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/alert";
 import { Button } from "@/ui/button";
