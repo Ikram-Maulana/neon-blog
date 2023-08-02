@@ -3,6 +3,7 @@ import {
   postProps,
 } from "@/validator/post-validator";
 import { Client } from "@notionhq/client";
+import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -47,6 +48,12 @@ export const GET = async (req: NextRequest) => {
           },
         ],
       },
+      sorts: [
+        {
+          property: "created_at",
+          direction: "descending",
+        },
+      ],
       page_size: limit ? parseInt(limit) : 8,
       start_cursor: page ? page : undefined,
     });
@@ -84,8 +91,11 @@ export const GET = async (req: NextRequest) => {
             .map((name) => name[0])
             .join(""),
         },
-        created_at: row.created_at.created_time,
-        updated_at: row.updated_at.last_edited_time,
+        created_at: format(new Date(row.created_at.created_time), "MMMM dd"),
+        updated_at: format(
+          new Date(row.updated_at.last_edited_time),
+          "MMMM dd"
+        ),
       };
     });
 

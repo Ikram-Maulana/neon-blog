@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const createPostProps = z.object({
+const createPostsProps = z.object({
   id: z.string(),
   slug: z.object({
     id: z.string(),
@@ -82,33 +82,35 @@ const createPostProps = z.object({
   }),
 });
 
-export type postProps = z.infer<typeof createPostProps>;
+export type postProps = z.infer<typeof createPostsProps>;
+
+const createPostProps = z.object({
+  id: z.string(),
+  slug: z.string(),
+  title: z.string(),
+  excerpt: z.string(),
+  banner: z.string(),
+  bannerImageHeight: z.number(),
+  bannerImageWidth: z.number(),
+  tags: z.array(z.string()),
+  status: z.string(),
+  author: z.object({
+    id: z.string(),
+    name: z.string(),
+    avatar_url: z.string(),
+    avatar_fallback: z.string(),
+  }),
+  created_at: z.string(),
+  updated_at: z.string(),
+});
 
 export const getPostsResponseValidator = z.object({
   error: z.string().nullable(),
   data: z.object({
-    posts: z.array(
-      z.object({
-        id: z.string(),
-        slug: z.string(),
-        title: z.string(),
-        excerpt: z.string(),
-        banner: z.string(),
-        bannerImageHeight: z.number(),
-        bannerImageWidth: z.number(),
-        tags: z.array(z.string()),
-        status: z.string(),
-        author: z.object({
-          id: z.string(),
-          name: z.string(),
-          avatar_url: z.string(),
-          avatar_fallback: z.string(),
-        }),
-        created_at: z.string(),
-        updated_at: z.string(),
-      })
-    ),
+    posts: z.array(createPostProps),
     nextCursor: z.string().nullable(),
     hasMore: z.boolean(),
   }),
 });
+
+export type PostCardProps = z.infer<typeof createPostProps>;

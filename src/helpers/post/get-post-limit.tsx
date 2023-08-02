@@ -6,7 +6,7 @@ export const getPostsLimit = () => {
   return useQuery({
     queryKey: ["posts", "limit"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/posts?_limit=4", {
+      const { data } = await axios.get("/api/posts?_limit=3", {
         headers: {
           "Cache-Control": "no-store",
         },
