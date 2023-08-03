@@ -113,4 +113,9 @@ export const getPostsResponseValidator = z.object({
   }),
 });
 
+export const getPostResponseValidator = z.object({
+  error: z.string().nullable(),
+  data: createPostProps,
+});
+
 export type PostCardProps = z.infer<typeof createPostProps>;
