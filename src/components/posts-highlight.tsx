@@ -67,7 +67,10 @@ const PostsHighlight = () => {
         </div>
       )}
 
-      {!isLoading && !isError && postHighlight && (
+      {!isLoading &&
+      !isError &&
+      postHighlight &&
+      postHighlight.posts.length !== 0 ? (
         <>
           <div className="hidden lg:items-center lg:gap-6 lg:grid lg:grid-cols-2 lg:my-12">
             <AspectRatio
@@ -143,7 +146,7 @@ const PostsHighlight = () => {
             </div>
           </div>
         </>
-      )}
+      ) : null}
     </>
   );
 };
