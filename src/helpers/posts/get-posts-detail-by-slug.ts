@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getPostsDetailBySlug = (slug: string) => {
   return useQuery({
-    queryKey: ["posts-detail-slug", slug],
+    queryKey: ["posts-detail", slug],
     queryFn: async () => {
       const { data } = await axios.get(`/api/posts/detail/${slug}`, {
         headers: {
