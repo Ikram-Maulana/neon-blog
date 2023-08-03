@@ -3,7 +3,7 @@ import {
   postProps,
 } from "@/validator/post-validator";
 import { Client } from "@notionhq/client";
-import { format } from "date-fns";
+import { format, formatDistanceToNow, isToday, parseISO } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -31,29 +31,35 @@ export const GET = async (req: NextRequest) => {
   const highlight = req.nextUrl.searchParams.get("_highlight") === "true";
 
   try {
+    const filter = [
+      {
+        property: "status",
+        status: {
+          equals: "Published",
+        },
+      },
+      {
+        property: "title",
+        rich_text: {
+          contains: search ? search : "",
+        },
+      },
+    ];
+
+    if (highlight) {
+      filter.push({
+        property: "highlight",
+        // @ts-ignore
+        checkbox: {
+          equals: highlight,
+        },
+      });
+    }
+
     const query = await notion.databases.query({
       database_id: notionDatabaseId,
       filter: {
-        and: [
-          {
-            property: "status",
-            status: {
-              equals: "Published",
-            },
-          },
-          {
-            property: "title",
-            rich_text: {
-              contains: search ? search : "",
-            },
-          },
-          {
-            property: "highlight",
-            checkbox: {
-              equals: highlight,
-            },
-          },
-        ],
+        and: filter,
       },
       sorts: [
         {
@@ -73,6 +79,18 @@ export const GET = async (req: NextRequest) => {
 
     // @ts-ignore
     const rows = query.results.map((res) => res.properties) as postProps[];
+
+    const formatDate = (createdAt: string) => {
+      const createdAtDate = parseISO(createdAt);
+
+      if (isToday(createdAtDate)) {
+        return formatDistanceToNow(createdAtDate, {
+          addSuffix: true,
+        });
+      } else {
+        return format(createdAtDate, "MMM dd, yyyy");
+      }
+    };
 
     const posts = rows.map((row) => {
       return {
@@ -98,11 +116,8 @@ export const GET = async (req: NextRequest) => {
             .map((name) => name[0])
             .join(""),
         },
-        created_at: format(new Date(row.created_at.created_time), "MMMM dd"),
-        updated_at: format(
-          new Date(row.updated_at.last_edited_time),
-          "MMMM dd"
-        ),
+        created_at: formatDate(row.created_at.created_time.toString()),
+        updated_at: formatDate(row.updated_at.last_edited_time.toString()),
       };
     });
 
