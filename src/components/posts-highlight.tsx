@@ -3,14 +3,14 @@
 import { getPostsHighlight } from "@/helpers/posts/get-posts-highlight";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/alert";
+import { AspectRatio } from "@/ui/aspect-ratio";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
+import { Badge } from "@/ui/badge";
+import { Button } from "@/ui/button";
+import { Skeleton } from "@/ui/skeleton";
 import { ArrowRightIcon, ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import { AspectRatio } from "./ui/aspect-ratio";
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "./ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
-import { Skeleton } from "./ui/skeleton";
 
 const PostsHighlight = () => {
   const { data: postHighlight, isLoading, isError } = getPostsHighlight();
