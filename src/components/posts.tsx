@@ -55,7 +55,7 @@ const Posts = () => {
         </div>
       )}
 
-      {!isLoading && posts && (
+      {!isLoading && !isError && posts && (
         <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
           {posts?.pages.map((post: any, pageIndex: number) => (
             <React.Fragment key={`posts-${pageIndex}`}>

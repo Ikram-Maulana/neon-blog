@@ -45,7 +45,7 @@ const PostsLimit = () => {
         </div>
       )}
 
-      {!isLoading && postsLimit && (
+      {!isLoading && !isError && postsLimit && (
         <>
           <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
             {postsLimit.posts.map((post: any) => (
