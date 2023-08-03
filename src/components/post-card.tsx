@@ -9,7 +9,7 @@ import { FC } from "react";
 
 const PostCard: FC<PostCardProps> = (post) => {
   return (
-    <Link href={`/post/${post.slug}`} className="flex group">
+    <Link href={`/blog/${post.slug}`} className="flex group">
       <Card>
         <CardContent className={cn("p-0")}>
           <div className="overflow-hidden h-52 md:h-56 lg:h-52 xl:h-56 rounded-t-xl">
@@ -27,7 +27,12 @@ const PostCard: FC<PostCardProps> = (post) => {
           <div className="p-6 pt-1">
             <div className="flex gap-2">
               {post.tags.map((tag, index) => (
-                <Badge key={`tag-${index}`} className="mt-3">
+                <Badge
+                  key={`tag-${index}`}
+                  className={cn(
+                    "mt-3 bg-emerald-500 shadow hover:bg-emerald-500/80 dark:bg-emerald-600 dark:hover:bg-emerald-600/80 dark:text-zinc-50"
+                  )}
+                >
                   {tag}
                 </Badge>
               ))}
