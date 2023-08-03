@@ -1,13 +1,13 @@
 "use client";
 
 import PostCard from "@/components/post-card";
+import PostCardSkeleton from "@/components/post-card-skeleton";
 import { getPosts } from "@/helpers/posts/get-posts";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { ExclamationTriangleIcon, RocketIcon } from "@radix-ui/react-icons";
 import React, { useEffect, useRef } from "react";
 import { useIntersectionObserver } from "usehooks-ts";
-import PostCardSkeleton from "./post-card-skeleton";
 
 const Posts = () => {
   const {
@@ -55,7 +55,7 @@ const Posts = () => {
         </div>
       )}
 
-      {!isLoading && !isError && posts && (
+      {!isLoading && !isError && posts && posts.pages[0].posts.length !== 0 ? (
         <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
           {posts?.pages.map((post: any, pageIndex: number) => (
             <React.Fragment key={`posts-${pageIndex}`}>
@@ -64,6 +64,16 @@ const Posts = () => {
               ))}
             </React.Fragment>
           ))}
+        </div>
+      ) : (
+        <div className="mb-0 h-60 md:my-12 md:h-64 lg:h-60 xl:h-72">
+          <Alert>
+            <RocketIcon className="w-4 h-4" />
+            <AlertTitle>Heads up!</AlertTitle>
+            <AlertDescription>
+              There are no posts yet. Please come back later.
+            </AlertDescription>
+          </Alert>
         </div>
       )}
 
