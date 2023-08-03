@@ -6,7 +6,7 @@ export const getPostsDetail = (slug: string) => {
   return useQuery({
     queryKey: ["posts-detail", slug],
     queryFn: async () => {
-      const { data } = await axios.get(`/api/posts/detail/${slug}`, {
+      const { data } = await axios.get(`/api/posts/${slug}`, {
         headers: {
           "Cache-Control": "no-store",
         },

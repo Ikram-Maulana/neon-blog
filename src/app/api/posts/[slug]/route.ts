@@ -1,8 +1,6 @@
-import {
-  getPostResponseValidator,
-  postProps,
-} from "@/validator/post-validator";
+import { postProps } from "@/validator/post-validator";
 import { Client } from "@notionhq/client";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { format, formatDistanceToNow, isToday, parseISO } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -37,7 +35,7 @@ export const GET = async (
   const slug = params.slug;
 
   try {
-    const query = await notion.databases.query({
+    const queryMetadata = await notion.databases.query({
       database_id: notionDatabaseId,
       filter: {
         property: "slug",
@@ -47,12 +45,7 @@ export const GET = async (
       },
     });
 
-    const pageId = query.results[0].id;
-
-    // @ts-ignore
-    const row = query.results[0].properties as postProps;
-
-    if (!row) {
+    if (queryMetadata.results.length === 0) {
       return NextResponse.json(
         {
           error: "Post not found",
@@ -61,6 +54,75 @@ export const GET = async (
         { status: 404 }
       );
     }
+
+    const queryBlocks = await notion.blocks.children.list({
+      block_id: queryMetadata.results[0].id,
+    });
+
+    if (queryBlocks.results.length === 0) {
+      return NextResponse.json(
+        {
+          error: "Post not found",
+          data: null,
+        },
+        { status: 404 }
+      );
+    }
+
+    let blocks = queryBlocks.results;
+
+    if (queryBlocks.results.length === 0) {
+      blocks = [
+        {
+          object: "block",
+          id: "",
+          parent: {
+            type: "page_id",
+            page_id: "",
+          },
+          created_time: "",
+          last_edited_time: "",
+          created_by: {
+            object: "user",
+            id: "",
+          },
+          last_edited_by: {
+            object: "user",
+            id: "",
+          },
+          has_children: false,
+          archived: false,
+          type: "paragraph",
+          paragraph: {
+            rich_text: [
+              {
+                type: "text",
+                text: {
+                  content: "",
+                  link: null,
+                },
+                annotations: {
+                  bold: false,
+                  italic: false,
+                  strikethrough: false,
+                  underline: false,
+                  code: false,
+                  color: "default",
+                },
+                plain_text: "",
+                href: null,
+              },
+            ],
+            color: "default",
+          },
+        },
+      ];
+    }
+
+    const pageId = queryMetadata.results[0].id;
+
+    // @ts-ignore
+    const row = queryMetadata.results[0].properties as postProps;
 
     const formatDate = (createdAt: string) => {
       const createdAtDate = parseISO(createdAt);
@@ -74,7 +136,7 @@ export const GET = async (
       }
     };
 
-    const post = {
+    const metadata = {
       id: pageId,
       slug: row.slug.rich_text[0].text.content,
       title: row.title.title[0].text.content,
@@ -101,12 +163,16 @@ export const GET = async (
       updated_at: formatDate(row.updated_at.last_edited_time.toString()),
     };
 
-    const response = getPostResponseValidator.parse({
-      error: null,
-      data: post,
-    });
-
-    return NextResponse.json(response, { status: 200 });
+    return NextResponse.json(
+      {
+        error: null,
+        data: {
+          metadata,
+          blocks,
+        },
+      },
+      { status: 200 }
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
