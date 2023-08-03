@@ -1,14 +1,18 @@
 "use client";
 
 import PostCard from "@/components/post-card";
+import PostCardSkeleton from "@/components/post-card-skeleton";
 import { getPostsLimit } from "@/helpers/posts/get-posts-limit";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/alert";
 import { Button } from "@/ui/button";
 import { Skeleton } from "@/ui/skeleton";
-import { ArrowRightIcon, ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import {
+  ArrowRightIcon,
+  ExclamationTriangleIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 import Link from "next/link";
-import PostCardSkeleton from "./post-card-skeleton";
 
 const PostsLimit = () => {
   const { data: postsLimit, isLoading, isError } = getPostsLimit();
@@ -45,7 +49,7 @@ const PostsLimit = () => {
         </div>
       )}
 
-      {!isLoading && !isError && postsLimit && (
+      {!isLoading && !isError && postsLimit && postsLimit.posts.length !== 0 ? (
         <>
           <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
             {postsLimit.posts.map((post: any) => (
@@ -60,6 +64,16 @@ const PostsLimit = () => {
             </Button>
           </div>
         </>
+      ) : (
+        <div className="mb-0 h-60 md:my-12 md:h-64 lg:h-60 xl:h-72">
+          <Alert>
+            <RocketIcon className="w-4 h-4" />
+            <AlertTitle>Heads up!</AlertTitle>
+            <AlertDescription>
+              There are no posts yet. Please come back later.
+            </AlertDescription>
+          </Alert>
+        </div>
       )}
     </>
   );
