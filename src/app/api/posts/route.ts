@@ -61,7 +61,7 @@ export const GET = async (req: NextRequest) => {
           direction: "descending",
         },
       ],
-      page_size: limit ? parseInt(limit) : 8,
+      page_size: limit ? parseInt(limit) : 6,
       start_cursor: page ? page : undefined,
     });
 
