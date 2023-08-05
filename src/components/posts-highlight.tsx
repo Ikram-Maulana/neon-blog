@@ -68,85 +68,85 @@ const PostsHighlight = () => {
       )}
 
       {!isLoading &&
-      !isError &&
-      postHighlight &&
-      postHighlight.posts.length !== 0 ? (
-        <>
-          <div className="hidden lg:items-center lg:gap-6 lg:grid lg:grid-cols-2 lg:my-12">
-            <AspectRatio
-              ratio={3 / 2}
-              className={
-                "bg-zinc-900/10 dark:bg-zinc-50/10 rounded-xl group overflow-hidden"
-              }
-            >
-              <Link href={`/blog/${postHighlight.posts[0].slug}`}>
-                <Image
-                  src={postHighlight.posts[0].banner}
-                  alt={postHighlight.posts[0].title}
-                  fill
-                  className="object-cover object-center transition-all duration-200 rounded-md cursor-pointer group-hover:scale-110"
-                  unoptimized
-                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  loader={({ src }) => src}
-                />
-              </Link>
-            </AspectRatio>
-            <div className="flex flex-col w-full">
-              <div className="flex gap-2">
-                {postHighlight.posts[0].tags.map(
-                  (tag: string, index: number) => (
-                    <Badge
-                      key={`tagHighlight-${index}`}
-                      className={cn(
-                        "mt-3 bg-emerald-500 shadow hover:bg-emerald-500/80 dark:bg-emerald-600 dark:hover:bg-emerald-600/80 dark:text-zinc-50"
-                      )}
-                    >
-                      {tag}
-                    </Badge>
-                  )
-                )}
-              </div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight transition-colors scroll-m-20 line-clamp-2">
-                {postHighlight.posts[0].title}
-              </h2>
-              <p className="mt-3 text-lg line-clamp-3">
-                {postHighlight.posts[0].excerpt}
-              </p>
-
-              <Button
-                className={cn(
-                  "mt-3 w-fit flex gap-2 items-center justify-center"
-                )}
-                asChild
+        !isError &&
+        postHighlight &&
+        postHighlight.posts.length !== 0 && (
+          <>
+            <div className="hidden lg:items-center lg:gap-6 lg:grid lg:grid-cols-2 lg:my-12">
+              <AspectRatio
+                ratio={3 / 2}
+                className={
+                  "bg-zinc-900/10 dark:bg-zinc-50/10 rounded-xl group overflow-hidden"
+                }
               >
                 <Link href={`/blog/${postHighlight.posts[0].slug}`}>
-                  Read more <ArrowRightIcon className="w-4 h-4" />
-                </Link>
-              </Button>
-
-              <div className="flex items-center gap-2 xl:mt-6 lg:mt-4">
-                <Avatar>
-                  <AvatarImage
-                    src={postHighlight.posts[0].author.avatar_url}
-                    alt={postHighlight.posts[0].author.name}
+                  <Image
+                    src={postHighlight.posts[0].banner}
+                    alt={postHighlight.posts[0].title}
+                    fill
+                    className="object-cover object-center transition-all duration-200 rounded-md cursor-pointer group-hover:scale-110"
+                    unoptimized
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    loader={({ src }) => src}
                   />
-                  <AvatarFallback>
-                    {postHighlight.posts[0].author.avatar_fallback}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col">
-                  <p className="font-medium leading-7 line-clamp-1">
-                    {postHighlight.posts[0].author.name}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Published at {postHighlight.posts[0].created_at}
-                  </p>
+                </Link>
+              </AspectRatio>
+              <div className="flex flex-col w-full">
+                <div className="flex gap-2">
+                  {postHighlight.posts[0].tags.map(
+                    (tag: string, index: number) => (
+                      <Badge
+                        key={`tagHighlight-${index}`}
+                        className={cn(
+                          "mt-3 bg-emerald-500 shadow hover:bg-emerald-500/80 dark:bg-emerald-600 dark:hover:bg-emerald-600/80 dark:text-zinc-50"
+                        )}
+                      >
+                        {tag}
+                      </Badge>
+                    )
+                  )}
+                </div>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight transition-colors scroll-m-20 line-clamp-2">
+                  {postHighlight.posts[0].title}
+                </h2>
+                <p className="mt-3 text-lg line-clamp-3">
+                  {postHighlight.posts[0].excerpt}
+                </p>
+
+                <Button
+                  className={cn(
+                    "mt-3 w-fit flex gap-2 items-center justify-center"
+                  )}
+                  asChild
+                >
+                  <Link href={`/blog/${postHighlight.posts[0].slug}`}>
+                    Read more <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                </Button>
+
+                <div className="flex items-center gap-2 xl:mt-6 lg:mt-4">
+                  <Avatar>
+                    <AvatarImage
+                      src={postHighlight.posts[0].author.avatar_url}
+                      alt={postHighlight.posts[0].author.name}
+                    />
+                    <AvatarFallback>
+                      {postHighlight.posts[0].author.avatar_fallback}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col">
+                    <p className="font-medium leading-7 line-clamp-1">
+                      {postHighlight.posts[0].author.name}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Published at {postHighlight.posts[0].created_at}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      ) : null}
+          </>
+        )}
     </>
   );
 };
