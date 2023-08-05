@@ -1,4 +1,7 @@
 import { postProps } from "@/validator/post-validator";
+import bookmarkPlugin from "@notion-render/bookmark-plugin";
+import { NotionRenderer } from "@notion-render/client";
+import hljsPlugin from "@notion-render/hljs-plugin";
 import { Client } from "@notionhq/client";
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { format, formatDistanceToNow, isToday, parseISO } from "date-fns";
@@ -119,6 +122,15 @@ export const GET = async (
       ];
     }
 
+    const notionRenderer = new NotionRenderer({
+      client: notion,
+    });
+
+    notionRenderer.use(hljsPlugin({}));
+    notionRenderer.use(bookmarkPlugin(undefined));
+    // @ts-ignore
+    const html = await notionRenderer.render(...blocks);
+
     const pageId = queryMetadata.results[0].id;
 
     // @ts-ignore
@@ -168,7 +180,7 @@ export const GET = async (
         error: null,
         data: {
           metadata,
-          blocks,
+          html,
         },
       },
       { status: 200 }
