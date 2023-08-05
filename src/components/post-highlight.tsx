@@ -1,6 +1,6 @@
 "use client";
 
-import { getPostsHighlight } from "@/helpers/posts/get-posts-highlight";
+import { getPostHighlight } from "@/helpers/posts/get-post-highlight";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/ui/alert";
 import { AspectRatio } from "@/ui/aspect-ratio";
@@ -12,8 +12,8 @@ import { ArrowRightIcon, ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 
-const PostsHighlight = () => {
-  const { data: postHighlight, isLoading, isError } = getPostsHighlight();
+const PostHighlight = () => {
+  const { data: postHighlight, isLoading, isError } = getPostHighlight();
 
   return (
     <>
@@ -151,4 +151,4 @@ const PostsHighlight = () => {
   );
 };
 
-export default PostsHighlight;
+export default PostHighlight;

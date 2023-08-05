@@ -2,9 +2,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const getPostsHighlight = () => {
+export const getPostHighlight = () => {
   return useQuery({
-    queryKey: ["posts", "highlight"],
+    queryKey: ["post", "highlight"],
     queryFn: async () => {
       const { data } = await axios.get("/api/posts?_limit=1&_highlight=true", {
         headers: {
