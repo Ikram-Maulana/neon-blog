@@ -49,32 +49,40 @@ const PostsLimit = () => {
         </div>
       )}
 
-      {!isLoading && !isError && postsLimit && postsLimit.posts.length !== 0 ? (
-        <>
-          <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
-            {postsLimit.posts.map((post: any) => (
-              <PostCard key={post.id} {...post} />
-            ))}
+      {!isLoading &&
+        !isError &&
+        postsLimit &&
+        postsLimit.posts.length !== 0 && (
+          <>
+            <div className="grid grid-cols-1 gap-6 mb-6 md:my-12 md:grid-cols-2 lg:grid-cols-3">
+              {postsLimit.posts.map((post: any) => (
+                <PostCard key={post.id} {...post} />
+              ))}
+            </div>
+            <div className="flex justify-center w-full sm:w-auto">
+              <Button asChild>
+                <Link href="/blog">
+                  See All <ArrowRightIcon className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </>
+        )}
+
+      {!isLoading &&
+        !isError &&
+        postsLimit &&
+        postsLimit.posts.length === 0 && (
+          <div className="mb-0 h-60 md:my-12 md:h-64 lg:h-60 xl:h-72">
+            <Alert>
+              <RocketIcon className="w-4 h-4" />
+              <AlertTitle>Heads up!</AlertTitle>
+              <AlertDescription>
+                There are no posts yet. Please come back later.
+              </AlertDescription>
+            </Alert>
           </div>
-          <div className="flex justify-center w-full sm:w-auto">
-            <Button asChild>
-              <Link href="/blog">
-                See All <ArrowRightIcon className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </>
-      ) : (
-        <div className="mb-0 h-60 md:my-12 md:h-64 lg:h-60 xl:h-72">
-          <Alert>
-            <RocketIcon className="w-4 h-4" />
-            <AlertTitle>Heads up!</AlertTitle>
-            <AlertDescription>
-              There are no posts yet. Please come back later.
-            </AlertDescription>
-          </Alert>
-        </div>
-      )}
+        )}
     </>
   );
 };
