@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   description: SITE.description,
   applicationName: SITE.applicationName,
   keywords: SITE.keywords,
-  authors: SITE.authors,
   creator: SITE.creator,
   themeColor: SITE.themeColor,
   icons: SITE.icons,
