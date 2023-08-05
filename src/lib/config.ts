@@ -29,12 +29,6 @@ export const SITE = {
     "app-router",
     "nextjs-notion-blog",
   ],
-  authors: [
-    {
-      name: "Ikram Maulana",
-      url: "https://ikram-maulana.tech",
-    },
-  ],
   creator: "Ikram Maulana",
   themeColor: "#F9F5EB",
   icons: [
