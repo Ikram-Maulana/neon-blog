@@ -11,7 +11,7 @@ const fetchData = async (page: string) => {
   return data.data;
 };
 
-export const getPosts = () => {
+export const getPostsAll = () => {
   return useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: async ({ pageParam = undefined }) => {

@@ -1,4 +1,4 @@
-import Posts from "@/components/posts";
+import PostsAll from "@/components/posts-all";
 import PostsHighlight from "@/components/posts-highlight";
 import type { Metadata } from "next";
 
@@ -26,7 +26,7 @@ const Blog = () => {
           </div>
 
           <PostsHighlight />
-          <Posts />
+          <PostsAll />
         </div>
       </section>
     </div>
