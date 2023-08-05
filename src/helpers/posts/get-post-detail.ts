@@ -2,9 +2,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const getPostsDetail = (slug: string) => {
+export const getPostDetail = (slug: string) => {
   return useQuery({
-    queryKey: ["posts-detail", slug],
+    queryKey: ["post-detail", slug],
     queryFn: async () => {
       const { data } = await axios.get(`/api/posts/${slug}`, {
         headers: {

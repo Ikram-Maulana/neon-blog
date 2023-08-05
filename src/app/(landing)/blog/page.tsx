@@ -1,5 +1,5 @@
+import PostHighlight from "@/components/post-highlight";
 import PostsAll from "@/components/posts-all";
-import PostsHighlight from "@/components/posts-highlight";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ const Blog = () => {
             </div>
           </div>
 
-          <PostsHighlight />
+          <PostHighlight />
           <PostsAll />
         </div>
       </section>
