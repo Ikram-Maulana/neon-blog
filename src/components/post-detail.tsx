@@ -23,7 +23,7 @@ const PostDetail: FC<PostDetailProps> = ({ slug }) => {
   return (
     <>
       {isLoadingPostDetail && (
-        <div className="text-center">
+        <div className="py-8 text-center sm:py-16 lg:py-20">
           <div className="flex justify-center gap-2">
             <Skeleton className="mt-3 w-[55.22px] h-[22px]" />
           </div>
@@ -166,7 +166,7 @@ const PostDetail: FC<PostDetailProps> = ({ slug }) => {
             </header>
 
             <div
-              className="max-w-3xl mx-auto mt-8 prose prose-lg prose-headings:font-heading prose-headings:leading-tighter prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-emerald-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-zinc-300 dark:prose-a:text-emerald-400 lg:prose-xl"
+              className="max-w-3xl mx-auto mt-16 prose prose-lg xs:mt-8 prose-headings:font-heading prose-headings:leading-tighter prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-emerald-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-zinc-300 dark:prose-a:text-emerald-400 lg:prose-xl"
               dangerouslySetInnerHTML={{ __html: postDetail.html }}
             />
           </article>
