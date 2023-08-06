@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: any) {
     openGraph: {
       title: post.properties.title.title[0].text.content,
       description: post.properties.excerpt.rich_text[0].text.content,
-      url: `https://neon-blog.vercel.app/blog/${slug}`,
+      url: `https://neonblog.vercel.app/blog/${slug}`,
       siteName: "Neon Blog",
       type: "article",
       images: [

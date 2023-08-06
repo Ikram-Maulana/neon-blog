@@ -12,7 +12,7 @@ import {
 export const SITE = {
   name: "Neon Blog",
 
-  origin: "https://neon-blog.vercel.app",
+  origin: "https://neonblog.vercel.app",
   basePathname: "/",
   trailingSlash: false,
 

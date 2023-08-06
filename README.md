@@ -2,7 +2,7 @@
 
 This is an example of a Next.js site that uses the new [Next.js file system router](https://nextjs.org/docs/routing/introduction) to create a blog site that is powered by the [Notion Public API](https://developers.notion.com/).
 
-Live example hosted on Vercel: https://neon-blog.vercel.app/
+Live example hosted on Vercel: https://neonblog.vercel.app/
 
 ![Neon Blog](public/neon-blog.png)
 
