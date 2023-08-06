@@ -166,7 +166,7 @@ const PostDetail: FC<PostDetailProps> = ({ slug }) => {
             </header>
 
             <div
-              className="max-w-3xl mx-auto mt-16 prose prose-lg xs:mt-8 prose-headings:font-heading prose-headings:leading-tighter prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-emerald-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-zinc-300 dark:prose-a:text-emerald-400 lg:prose-xl"
+              className="max-w-3xl mx-auto mt-[72px] prose prose-lg xs:mt-8 prose-headings:font-heading prose-headings:leading-tighter prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-emerald-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-zinc-300 dark:prose-a:text-emerald-400 lg:prose-xl"
               dangerouslySetInnerHTML={{ __html: postDetail.html }}
             />
           </article>
