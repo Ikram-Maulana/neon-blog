@@ -1,34 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Neon Blog
 
-## Getting Started
+This is an example of a Next.js site that uses the new [Next.js file system router](https://nextjs.org/docs/routing/introduction) to create a blog site that is powered by the [Notion Public API](https://developers.notion.com/).
 
-First, run the development server:
+Live example hosted on Vercel: https://neon-blog.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![Neon Blog](public/neon-blog.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Create Your Page Table
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To get started, you need to follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Create a new blank Notion page
 
-## Learn More
+2. Add inline table on your page
 
-To learn more about Next.js, take a look at the following resources:
+3. Add the below fields to your table
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - `title`: This is the title of your blog post
+   - `slug`: This is the slug of your blog post,it should be a text property
+   - `author`: This is the author of your blog post, it should be a person property
+   - `banner`: This is the banner of your blog post, it should be a file property
+   - `bannerImageHeight`: This is the height of your banner image, it should be a number property
+   - `bannerImageWidth`: This is the width of your banner image, it should be a number property
+   - `created_at`: This is the created date of your blog post, it should be a date property
+   - `excerpt`: This is the excerpt of your blog post, it should be a text property
+   - `highlight`: This is checkbox to highlight your blog post, it should be a checkbox property
+   - `status`: This is the status of your blog post, it should be a status property with options: `draft` and `published`
+   - `tags`: This is the tags of your blog post, it should be a multi-select property
+   - `updated_at`: This is the updated date of your blog post, it should be a date property
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔑 Getting Blog ID & Token
 
-## Deploy on Vercel
+To get your Notion Blog ID and Token, you need to follow [Notion's Getting Started Guide](https://developers.notion.com/docs/getting-started). Then, you need to add your `NOTION_SECRET` and `NOTION_DATABASE_ID` to your `.env.local` file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Creating Blog Posts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Create a new row in your database in Notion
+2. Add a title, banner, bannerImageHeight, bannerImageWidth, tags, and content
+3. Fill slug with the same value as the title, but in lowercase and with dashes instead of spaces
+4. Fill excerpt with a short description of the post
+5. Fill checkbox highlight with true if you want to highlight the post
+6. Fill status with published if you want to publish the post
+7. Repeat!
+
+## 🖥️ Running Locally
+
+1. Clone this repo
+
+   ```bash
+   git clone https://github.com/Ikram-Maulana/neon-blog.git
+   ```
+
+2. Install dependencies
+
+   ```bash
+   pnpm install
+   ```
+
+3. Add your `NOTION_SECRET` and `NOTION_DATABASE_ID` to your `.env.local` file
+
+   ```bash
+    NOTION_SECRET=...
+    NOTION_DATABASE_ID=...
+   ```
+
+4. Run the development server
+
+   ```bash
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## ✅ To Do Next
+
+- [ ] Add Search Functionality
+- [ ] Add Query Posts by Tag
+- [ ] Add Query Posts by User
+
+## 🚀 Deploy Your Own
+
+1. Clone this repo
+
+   ```bash
+   git clone https://github.com/Ikram-Maulana/neon-blog.git
+   ```
+
+2. Configure project with [Vercel](https://vercel.com)
+
+3. Add your `NOTION_SECRET` and `NOTION_DATABASE_ID` to your [Vercel Project Environment Variables](https://vercel.com/docs/environment-variables)
+
+4. Do final deploy with Vercel
